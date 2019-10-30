@@ -1,0 +1,20 @@
+/bin/
+/build/
+/dist/
+/vendor/
+/.gen
+
+# packr files https://github.com/gobuffalo/packr/tree/master/v2
+*-packr.go
+
+# IDE integration
+/.vscode/*
+!/.vscode/tasks.json
+/.idea/*
+!/.idea/copyright/
+!/.idea/*.iml
+!/.idea/externalDependencies.xml
+!/.idea/go.imports.xml
+!/.idea/modules.xml
+!/.idea/runConfigurations/
+!/.idea/scopes/
