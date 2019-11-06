@@ -664,6 +664,11 @@ func (in *HTTPRouteDestination) DeepCopyInto(out *HTTPRouteDestination) {
 		*out = new(Destination)
 		(*in).DeepCopyInto(*out)
 	}
+	if in.Weight != nil {
+		in, out := &in.Weight, &out.Weight
+		*out = new(int)
+		**out = **in
+	}
 	if in.Headers != nil {
 		in, out := &in.Headers, &out.Headers
 		*out = new(Headers)
@@ -955,6 +960,11 @@ func (in *RouteDestination) DeepCopyInto(out *RouteDestination) {
 		in, out := &in.Destination, &out.Destination
 		*out = new(Destination)
 		(*in).DeepCopyInto(*out)
+	}
+	if in.Weight != nil {
+		in, out := &in.Weight, &out.Weight
+		*out = new(int)
+		**out = **in
 	}
 }
 
