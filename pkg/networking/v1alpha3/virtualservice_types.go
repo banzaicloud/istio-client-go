@@ -527,7 +527,7 @@ type HTTPRouteDestination struct {
 	// version. (0-100). Sum of weights across destinations SHOULD BE == 100.
 	// If there is only one destination in a rule, the weight value is assumed to
 	// be 100.
-	Weight *int `json:"weight"`
+	Weight *int `json:"weight,omitempty"`
 
 	// Header manipulation rules
 	Headers *Headers `json:"headers,omitempty"`
@@ -543,7 +543,7 @@ type RouteDestination struct {
 	// version. (0-100). Sum of weights across destinations SHOULD BE == 100.
 	// If there is only one destination in a rule, the weight value is assumed to
 	// be 100.
-	Weight *int `json:"weight"`
+	Weight *int `json:"weight,omitempty"`
 }
 
 // Destination indicates the network addressable service to which the
