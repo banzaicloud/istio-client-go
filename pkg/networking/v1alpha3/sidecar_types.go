@@ -395,3 +395,13 @@ const (
 	// the host.
 	CaptureModeNone     CaptureMode = "NONE"
 )
+
+// +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+
+// SidecarList is a list of Sidecar resources
+type SidecarList struct {
+	metav1.TypeMeta `json:",inline"`
+	metav1.ListMeta `json:"metadata"`
+
+	Items []Sidecar `json:"items"`
+}
