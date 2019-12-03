@@ -226,7 +226,7 @@ type Sidecar struct {
 	metav1.TypeMeta   `json:",inline"`
 	metav1.ObjectMeta `json:"metadata,omitempty"`
 
-	Spec SidecarSpec `json:"spec,omitempty"`
+	Spec SidecarSpec `json:"spec"`
 }
 
 // SidecarSpec describes the configuration of the sidecar proxy that mediates
@@ -247,7 +247,7 @@ type SidecarSpec struct {
 	// Egress specifies the configuration of the sidecar for processing
 	// outbound traffic from the attached workload instance to other services in the
 	// mesh.
-	Egress []*IstioEgressListener `json:"egress,omitempty"`
+	Egress []*IstioEgressListener `json:"egress"`
 	// This allows to configure the outbound traffic policy.
 	// If your application uses one or more external
 	// services that are not known apriori, setting the policy to `ALLOW_ANY`
@@ -281,7 +281,7 @@ const (
 // traffic listener on the sidecar proxy attached to a workload instance.
 type IstioIngressListener struct {
 	// The port associated with the listener.
-	Port *Port `json:"port,omitempty"`
+	Port *Port `json:"port"`
 	// The IP to which the listener should be bound. Must be in the
 	// format `x.x.x.x`. Unix domain socket addresses are not allowed in
 	// the bind field for ingress listeners. If omitted, Istio will
@@ -297,7 +297,7 @@ type IstioIngressListener struct {
 	// redirect traffic arriving at the bind `IP:Port` on the sidecar to a `localhost:port`
 	// or Unix domain socket where the application workload instance is listening for
 	// connections. Format should be `127.0.0.1:PORT` or `unix:///path/to/socket`
-	DefaultEndpoint      string   `json:"default_endpoint,omitempty"`
+	DefaultEndpoint      string   `json:"default_endpoint"`
 }
 
 // IstioEgressListener specifies the properties of an outbound traffic
@@ -361,7 +361,7 @@ type IstioEgressListener struct {
 	// policy is enabled, or add `istio-system/*` to allow all services in the
 	// `istio-system` namespace. This requirement is temporary and will be removed
 	// in a future Istio release.
-	Hosts                []string `json:"hosts,omitempty"`
+	Hosts                []string `json:"hosts"`
 }
 
 // WorkloadSelector specifies the criteria used to determine if the `Gateway`,
@@ -376,7 +376,7 @@ type WorkloadSelector struct {
 	// on which this `SidecarSpec` configuration should be applied. The scope of
 	// label search is restricted to the configuration namespace in which the
 	// the resource is present.
-	Labels               map[string]string `json:"labels,omitempty"`
+	Labels               map[string]string `json:"labels"`
 }
 
 // CaptureMode describes how traffic to a listener is expected to be
