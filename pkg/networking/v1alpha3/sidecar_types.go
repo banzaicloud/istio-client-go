@@ -273,9 +273,8 @@ const (
 	OutboundTrafficPolicyRegistryOnly OutboundTrafficPolicy = "REGISTRY_ONLY"
 	// Outbound traffic to unknown destinations will be allowed, in case
 	// there are no services or `ServiceEntry` configurations for the destination port.
-	OutboundTrafficPolicyAllowAny     OutboundTrafficPolicy = "ALLOW_ANY"
+	OutboundTrafficPolicyAllowAny OutboundTrafficPolicy = "ALLOW_ANY"
 )
-
 
 // IstioIngressListener specifies the properties of an inbound
 // traffic listener on the sidecar proxy attached to a workload instance.
@@ -297,7 +296,7 @@ type IstioIngressListener struct {
 	// redirect traffic arriving at the bind `IP:Port` on the sidecar to a `localhost:port`
 	// or Unix domain socket where the application workload instance is listening for
 	// connections. Format should be `127.0.0.1:PORT` or `unix:///path/to/socket`
-	DefaultEndpoint      string   `json:"default_endpoint"`
+	DefaultEndpoint string `json:"default_endpoint"`
 }
 
 // IstioEgressListener specifies the properties of an outbound traffic
@@ -361,7 +360,7 @@ type IstioEgressListener struct {
 	// policy is enabled, or add `istio-system/*` to allow all services in the
 	// `istio-system` namespace. This requirement is temporary and will be removed
 	// in a future Istio release.
-	Hosts                []string `json:"hosts"`
+	Hosts []string `json:"hosts"`
 }
 
 // WorkloadSelector specifies the criteria used to determine if the `Gateway`,
@@ -376,7 +375,7 @@ type WorkloadSelector struct {
 	// on which this `SidecarSpec` configuration should be applied. The scope of
 	// label search is restricted to the configuration namespace in which the
 	// the resource is present.
-	Labels               map[string]string `json:"labels"`
+	Labels map[string]string `json:"labels"`
 }
 
 // CaptureMode describes how traffic to a listener is expected to be
@@ -385,7 +384,7 @@ type CaptureMode string
 
 const (
 	// The default capture mode defined by the environment.
-	CaptureModeDefault  CaptureMode = "DEFAULT"
+	CaptureModeDefault CaptureMode = "DEFAULT"
 	// Capture traffic using IPtables redirection.
 	CaptureModeIPTables CaptureMode = "IPTABLES"
 	// No traffic capture. When used in an egress listener, the application is
@@ -393,7 +392,7 @@ const (
 	// domain socket. When used in an ingress listener, care needs to be taken
 	// to ensure that the listener port is not in use by other processes on
 	// the host.
-	CaptureModeNone     CaptureMode = "NONE"
+	CaptureModeNone CaptureMode = "NONE"
 )
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
