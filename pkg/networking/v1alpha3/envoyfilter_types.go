@@ -541,8 +541,8 @@ const (
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
 // EnvoyFilterList is a collection of EnvoyFilters.
 type EnvoyFilterList struct {
-	v1.TypeMeta
+	v1.TypeMeta `json:",inline"`
 	// +optional
-	v1.ListMeta
-	Items []EnvoyFilter
+	v1.ListMeta `json:"metadata"`
+	Items       []EnvoyFilter `json:"items"`
 }
