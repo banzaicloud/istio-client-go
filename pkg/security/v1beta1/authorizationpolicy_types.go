@@ -202,7 +202,7 @@ type AuthorizationPolicySpec struct {
 
 // Action specifies the operation to take.
 type AuthorizationPolicyAction string
- 
+
 const (
 	// Allow a request only if it matches the rules. This is the default type.
 	AuthorizationPolicyActionAllow AuthorizationPolicyAction = "ALLOW"
@@ -284,9 +284,9 @@ type Source struct {
 	// Single IP (e.g. "1.2.3.4") and CIDR (e.g. "1.2.3.0/24") are supported.
 	//
 	// If not set, any IP is allowed.
-	IpBlocks []string `json:"ipBlocks,omitempty"`
+	IPBlocks []string `json:"ipBlocks,omitempty"`
 	// Optional. A list of negative match of IP blocks.
-	NotIpBlocks []string `json:"notIpBlocks,omitempty"`
+	NotIPBlocks []string `json:"notIpBlocks,omitempty"`
 }
 
 // Operation specifies the operations of a request. Fields in the operation are
