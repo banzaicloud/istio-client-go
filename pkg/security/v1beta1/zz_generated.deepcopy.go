@@ -566,13 +566,13 @@ func (in *Source) DeepCopyInto(out *Source) {
 		*out = make([]string, len(*in))
 		copy(*out, *in)
 	}
-	if in.IpBlocks != nil {
-		in, out := &in.IpBlocks, &out.IpBlocks
+	if in.IPBlocks != nil {
+		in, out := &in.IPBlocks, &out.IPBlocks
 		*out = make([]string, len(*in))
 		copy(*out, *in)
 	}
-	if in.NotIpBlocks != nil {
-		in, out := &in.NotIpBlocks, &out.NotIpBlocks
+	if in.NotIPBlocks != nil {
+		in, out := &in.NotIPBlocks, &out.NotIPBlocks
 		*out = make([]string, len(*in))
 		copy(*out, *in)
 	}

@@ -77,7 +77,7 @@ type JWTRule struct {
 	// Example: `https://www.googleapis.com/oauth2/v1/certs`
 	//
 	// Note: Only one of jwks_uri and jwks should be used. jwks_uri will be ignored if it does.
-	JwksUri string `json:"jwksUri,omitempty"`
+	JwksURI string `json:"jwksUri,omitempty"`
 	// JSON Web Key Set of public keys to validate signature of the JWT.
 	// See https://auth0.com/docs/jwks.
 	//
@@ -102,7 +102,7 @@ type JWTRule struct {
 	// backend. The forwarded data is `base64_encoded(jwt_payload_in_JSON)`. If it is not specified,
 	// the payload will not be emitted.
 	OutputPayloadToHeader string `json:"outputPayloadToHeader,omitempty"`
-	// If set to true, the orginal token will be kept for the ustream request. Default is false.
+	// If set to true, the original token will be kept for the ustream request. Default is false.
 	ForwardOriginalToken bool `json:"forwardOriginalToken,omitempty"`
 }
 
