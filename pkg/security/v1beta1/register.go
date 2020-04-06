@@ -42,7 +42,14 @@ var (
 
 // Adds the list of known types to Scheme.
 func addKnownTypes(scheme *runtime.Scheme) error {
-	// scheme.AddKnownTypes(SchemeGroupVersion,)
+	scheme.AddKnownTypes(SchemeGroupVersion,
+		&AuthorizationPolicy{},
+		&AuthorizationPolicyList{},
+		&PeerAuthentication{},
+		&PeerAuthenticationList{},
+		&RequestAuthentication{},
+		&RequestAuthenticationList{},
+	)
 	metav1.AddToGroupVersion(scheme, SchemeGroupVersion)
 	return nil
 }
