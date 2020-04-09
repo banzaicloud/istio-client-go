@@ -2184,7 +2184,7 @@ func (in *WorkloadEntryList) DeepCopyInto(out *WorkloadEntryList) {
 	out.ListMeta = in.ListMeta
 	if in.Items != nil {
 		in, out := &in.Items, &out.Items
-		*out = make([]EnvoyFilter, len(*in))
+		*out = make([]WorkloadEntry, len(*in))
 		for i := range *in {
 			(*in)[i].DeepCopyInto(&(*out)[i])
 		}

@@ -189,5 +189,5 @@ type WorkloadEntryList struct {
 	v1.TypeMeta `json:",inline"`
 	// +optional
 	v1.ListMeta `json:"metadata"`
-	Items       []EnvoyFilter `json:"items"`
+	Items       []WorkloadEntry `json:"items"`
 }
