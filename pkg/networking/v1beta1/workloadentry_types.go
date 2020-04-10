@@ -12,7 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-package v1alpha3
+package v1beta1
 
 import v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 
@@ -52,7 +52,7 @@ type WorkloadEntry struct {
 // the localhost on the same port.
 //
 // ```yaml
-// apiVersion: networking.istio.io/v1alpha3
+// apiVersion: networking.istio.io/v1beta1
 // kind: WorkloadEntry
 // metadata:
 //   name: details-svc
@@ -72,7 +72,7 @@ type WorkloadEntry struct {
 // and the associated service entry
 //
 // ```yaml
-// apiVersion: networking.istio.io/v1alpha3
+// apiVersion: networking.istio.io/v1beta1
 // kind: ServiceEntry
 // metadata:
 //   name: details-svc
@@ -97,7 +97,7 @@ type WorkloadEntry struct {
 // forwarding the request.
 //
 // ```yaml
-// apiVersion: networking.istio.io/v1alpha3
+// apiVersion: networking.istio.io/v1beta1
 // kind: WorkloadEntry
 // metadata:
 //   name: details-svc
@@ -117,7 +117,7 @@ type WorkloadEntry struct {
 // and the associated service entry
 //
 // ```yaml
-// apiVersion: networking.istio.io/v1alpha3
+// apiVersion: networking.istio.io/v1beta1
 // kind: ServiceEntry
 // metadata:
 //   name: details-svc
