@@ -459,14 +459,14 @@ type ServiceEntrySpec struct {
 	//
 	// NOTE: in the current release, the `exportTo` value is restricted to
 	// "." or "*" (i.e., the current namespace or all namespaces).
-	ExportTo []string `json:"export_to,omitempty"`
+	ExportTo []string `json:"exportTo,omitempty"`
 
 	// The list of subject alternate names allowed for workload instances that
 	// implement this service. This information is used to enforce
 	// [secure-naming](https://istio.io/docs/concepts/security/#secure-naming).
 	// If specified, the proxy will verify that the server
 	// certificate's subject alternate name matches one of the specified values.
-	SubjectAltNames []string `json:"subject_alt_names,omitempty"`
+	SubjectAltNames []string `json:"subjectAltNames,omitempty"`
 }
 
 // Endpoint defines a network address (IP or hostname) associated with
