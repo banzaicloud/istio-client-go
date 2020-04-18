@@ -236,7 +236,7 @@ type SidecarSpec struct {
 	// Criteria used to select the specific set of pods/VMs on which this
 	// `SidecarSpec` configuration should be applied. If omitted, the `SidecarSpec`
 	// configuration will be applied to all workload instances in the same namespace.
-	WorkloadSelector *WorkloadSelector `json:"workload_selector,omitempty"`
+	WorkloadSelector *WorkloadSelector `json:"workloadSelector,omitempty"`
 	// Ingress specifies the configuration of the sidecar for processing
 	// inbound traffic to the attached workload instance. If omitted, Istio will
 	// automatically configure the sidecar based on the information about the workload
@@ -253,7 +253,7 @@ type SidecarSpec struct {
 	// services that are not known apriori, setting the policy to `ALLOW_ANY`
 	// will cause the sidecars to route any unknown traffic originating from
 	// the application to its requested destination.
-	OutboundTrafficPolicy *OutboundTrafficPolicy `json:"outbound_traffic_policy,omitempty"`
+	OutboundTrafficPolicy *OutboundTrafficPolicy `json:"outboundTrafficPolicy,omitempty"`
 }
 
 // OutboundTrafficPolicy sets the default behavior of the sidecar for
@@ -290,13 +290,13 @@ type IstioIngressListener struct {
 	Bind string `json:"bind,omitempty"`
 	// The captureMode option dictates how traffic to the listener is
 	// expected to be captured (or not).
-	CaptureMode CaptureMode `json:"capture_mode,omitempty"`
+	CaptureMode CaptureMode `json:"captureMode,omitempty"`
 	// The loopback IP endpoint or Unix domain socket to which
 	// traffic should be forwarded to. This configuration can be used to
 	// redirect traffic arriving at the bind `IP:Port` on the sidecar to a `localhost:port`
 	// or Unix domain socket where the application workload instance is listening for
 	// connections. Format should be `127.0.0.1:PORT` or `unix:///path/to/socket`
-	DefaultEndpoint string `json:"default_endpoint"`
+	DefaultEndpoint string `json:"defaultEndpoint"`
 }
 
 // IstioEgressListener specifies the properties of an outbound traffic
@@ -323,7 +323,7 @@ type IstioEgressListener struct {
 	// When the bind address is an IP, the captureMode option dictates
 	// how traffic to the listener is expected to be captured (or not).
 	// captureMode must be DEFAULT or `NONE` for Unix domain socket binds.
-	CaptureMode CaptureMode `json:"capture_mode,omitempty"`
+	CaptureMode CaptureMode `json:"captureMode,omitempty"`
 	// One or more service hosts exposed by the listener
 	// in `namespace/dnsName` format. Services in the specified namespace
 	// matching `dnsName` will be exposed.
