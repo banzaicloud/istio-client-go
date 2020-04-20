@@ -256,7 +256,7 @@ type SidecarSpec struct {
 	OutboundTrafficPolicy *OutboundTrafficPolicy `json:"outboundTrafficPolicy,omitempty"`
 }
 
-// OutboundTrafficPolicy sets the default behavior of the sidecar for
+// `OutboundTrafficPolicy` sets the default behavior of the sidecar for
 // handling outbound traffic from the application.
 // If your application uses one or more external
 // services that are not known apriori, setting the policy to `ALLOW_ANY`
@@ -265,15 +265,19 @@ type SidecarSpec struct {
 // encouraged to use `ServiceEntry` configurations to explicitly declare any external
 // dependencies, instead of using `ALLOW_ANY`, so that traffic to these
 // services can be monitored.
-type OutboundTrafficPolicy string
+type OutboundTrafficPolicy struct {
+	Mode *OutboundTrafficPolicyMode `json:"mode,omitempty"`
+}
+
+type OutboundTrafficPolicyMode string
 
 const (
 	// Outbound traffic will be restricted to services defined in the
 	// service registry as well as those defined through `ServiceEntry` configurations.
-	OutboundTrafficPolicyRegistryOnly OutboundTrafficPolicy = "REGISTRY_ONLY"
+	OutboundTrafficPolicyRegistryOnly OutboundTrafficPolicyMode = "REGISTRY_ONLY"
 	// Outbound traffic to unknown destinations will be allowed, in case
 	// there are no services or `ServiceEntry` configurations for the destination port.
-	OutboundTrafficPolicyAllowAny OutboundTrafficPolicy = "ALLOW_ANY"
+	OutboundTrafficPolicyAllowAny OutboundTrafficPolicyMode = "ALLOW_ANY"
 )
 
 // IstioIngressListener specifies the properties of an inbound
