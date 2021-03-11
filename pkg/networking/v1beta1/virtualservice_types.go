@@ -255,9 +255,14 @@ type HTTPRoute struct {
 	Mirror *Destination `json:"mirror,omitempty"`
 
 	// Percentage of the traffic to be mirrored by the `mirror` field.
+	// Use of integer `mirror_percent` value is deprecated. Use the
+	// double `mirror_percentage` field instead
+	MirrorPercent *uint32 `json:"mirrorPercent,omitempty"`
+
+	// Percentage of the traffic to be mirrored by the `mirror` field.
 	// If this field is absent, all the traffic (100%) will be mirrored.
 	// Max value is 100.
-	MirrorPercent *uint32 `json:"mirrorPercent,omitempty"`
+	MirrorPercentage *Percentage `json:"mirrorPercentage,omitempty"`
 
 	// Cross-Origin Resource Sharing policy (CORS). Refer to
 	// [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS)
