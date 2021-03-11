@@ -839,6 +839,11 @@ func (in *HTTPRoute) DeepCopyInto(out *HTTPRoute) {
 		*out = new(uint32)
 		**out = **in
 	}
+	if in.MirrorPercentage != nil {
+		in, out := &in.MirrorPercentage, &out.MirrorPercentage
+		*out = new(Percentage)
+		**out = **in
+	}
 	if in.CorsPolicy != nil {
 		in, out := &in.CorsPolicy, &out.CorsPolicy
 		*out = new(CorsPolicy)
