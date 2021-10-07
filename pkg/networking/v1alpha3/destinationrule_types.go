@@ -15,6 +15,7 @@
 package v1alpha3
 
 import (
+	"github.com/gogo/protobuf/types"
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 )
 
@@ -493,6 +494,35 @@ type OutlierDetection struct {
 	// is accessed over an opaque TCP connection, connect timeouts and
 	// connection error/failure events qualify as an error.
 	ConsecutiveErrors int32 `json:"consecutiveErrors,omitempty"`
+
+	// Number of gateway errors before a host is ejected from the connection pool.
+	// When the upstream host is accessed over HTTP, a 502, 503, or 504 return
+	// code qualifies as a gateway error. When the upstream host is accessed over
+	// an opaque TCP connection, connect timeouts and connection error/failure
+	// events qualify as a gateway error.
+	// This feature is disabled by default or when set to the value 0.
+	//
+	// Note that consecutive_gateway_errors and consecutive_5xx_errors can be
+	// used separately or together. Because the errors counted by
+	// consecutive_gateway_errors are also included in consecutive_5xx_errors,
+	// if the value of consecutive_gateway_errors is greater than or equal to
+	// the value of consecutive_5xx_errors, consecutive_gateway_errors will have
+	// no effect.
+	ConsecutiveGatewayErrors *types.UInt32Value `` /* 135-byte string literal not displayed */
+
+	// Number of 5xx errors before a host is ejected from the connection pool.
+	// When the upstream host is accessed over an opaque TCP connection, connect
+	// timeouts, connection error/failure and request failure events qualify as a
+	// 5xx error.
+	// This feature defaults to 5 but can be disabled by setting the value to 0.
+	//
+	// Note that consecutive_gateway_errors and consecutive_5xx_errors can be
+	// used separately or together. Because the errors counted by
+	// consecutive_gateway_errors are also included in consecutive_5xx_errors,
+	// if the value of consecutive_gateway_errors is greater than or equal to
+	// the value of consecutive_5xx_errors, consecutive_gateway_errors will have
+	// no effect.
+	Consecutive_5XxErrors *types.UInt32Value `protobuf:"bytes,7,opt,name=consecutive_5xx_errors,json=consecutive5xxErrors,proto3" json:"consecutive_5xx_errors,omitempty"`
 
 	// Time interval between ejection sweep analysis. format:
 	// 1h/1m/1s/1ms. MUST BE >=1ms. Default is 10s.
