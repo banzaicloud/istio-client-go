@@ -15,7 +15,6 @@
 package v1alpha3
 
 import (
-	"github.com/gogo/protobuf/types"
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 )
 
@@ -508,7 +507,7 @@ type OutlierDetection struct {
 	// if the value of consecutive_gateway_errors is greater than or equal to
 	// the value of consecutive_5xx_errors, consecutive_gateway_errors will have
 	// no effect.
-	ConsecutiveGatewayErrors *types.UInt32Value `` /* 135-byte string literal not displayed */
+	ConsecutiveGatewayErrors *uint32 `json:"consecutiveGatewayErrors,omitempty"`
 
 	// Number of 5xx errors before a host is ejected from the connection pool.
 	// When the upstream host is accessed over an opaque TCP connection, connect
@@ -522,7 +521,7 @@ type OutlierDetection struct {
 	// if the value of consecutive_gateway_errors is greater than or equal to
 	// the value of consecutive_5xx_errors, consecutive_gateway_errors will have
 	// no effect.
-	Consecutive_5XxErrors *types.UInt32Value `protobuf:"bytes,7,opt,name=consecutive_5xx_errors,json=consecutive5xxErrors,proto3" json:"consecutive_5xx_errors,omitempty"`
+	Consecutive_5XxErrors *uint32 `json:"consecutive5xxErrors,omitempty"`
 
 	// Time interval between ejection sweep analysis. format:
 	// 1h/1m/1s/1ms. MUST BE >=1ms. Default is 10s.
