@@ -521,7 +521,7 @@ type OutlierDetection struct {
 	// if the value of consecutive_gateway_errors is greater than or equal to
 	// the value of consecutive_5xx_errors, consecutive_gateway_errors will have
 	// no effect.
-	Consecutive_5XxErrors *uint32 `json:"consecutive5xxErrors,omitempty"`
+	Consecutive5XxErrors *uint32 `json:"consecutive5xxErrors,omitempty"`
 
 	// Time interval between ejection sweep analysis. format:
 	// 1h/1m/1s/1ms. MUST BE >=1ms. Default is 10s.

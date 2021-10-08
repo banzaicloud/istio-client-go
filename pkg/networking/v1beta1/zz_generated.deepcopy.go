@@ -930,8 +930,8 @@ func (in *OutlierDetection) DeepCopyInto(out *OutlierDetection) {
 		*out = new(uint32)
 		**out = **in
 	}
-	if in.Consecutive_5XxErrors != nil {
-		in, out := &in.Consecutive_5XxErrors, &out.Consecutive_5XxErrors
+	if in.Consecutive5XxErrors != nil {
+		in, out := &in.Consecutive5XxErrors, &out.Consecutive5XxErrors
 		*out = new(uint32)
 		**out = **in
 	}
