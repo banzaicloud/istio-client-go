@@ -57,6 +57,8 @@ func addKnownTypes(scheme *runtime.Scheme) error {
 		&VirtualServiceList{},
 		&WorkloadEntry{},
 		&WorkloadEntryList{},
+		&WorkloadGroup{},
+		&WorkloadGroupList{},
 	)
 	metav1.AddToGroupVersion(scheme, SchemeGroupVersion)
 	return nil
