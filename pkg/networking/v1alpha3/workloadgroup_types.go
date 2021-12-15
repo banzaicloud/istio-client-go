@@ -24,7 +24,7 @@ import (
 type WorkloadGroup struct {
 	metav1.TypeMeta   `json:",inline"`
 	metav1.ObjectMeta `json:"metadata,omitempty"`
-	Spec WorkloadGroupSpec `json:"spec"`
+	Spec              WorkloadGroupSpec `json:"spec"`
 }
 
 // `WorkloadGroup` describes a collection of workload instances.
@@ -88,7 +88,7 @@ type WorkloadGroupSpec struct {
 	Template *WorkloadEntry `json:"template"`
 	// `ReadinessProbe` describes the configuration the user must provide for health-checking on their workload.
 	// This configuration mirrors K8S in both syntax and logic for the most part.
-	Probe    *ReadinessProbe `json:"probe,omitempty"`
+	Probe *ReadinessProbe `json:"probe,omitempty"`
 }
 
 // WorkloadGroupObjectMeta describes metadata that will be attached to a `WorkloadEntry`.
@@ -97,7 +97,7 @@ type WorkloadGroupObjectMeta struct {
 	// Labels to attach.
 	Labels map[string]string `json:"labels,omitempty"`
 	// Annotations to attach.
-	Annotations          map[string]string `json:"annotations,omitempty"`
+	Annotations map[string]string `json:"annotations,omitempty"`
 }
 
 type ReadinessProbe struct {
@@ -119,9 +119,9 @@ type ReadinessProbe struct {
 	// Users can only provide one configuration for health-checks (tcp, http, exec),
 	// and this is expressed as a one-of. All the other configuration values
 	// hold true for any of the health-check methods.
-	HttpGet *HTTPHealthCheckConfig `json:"http_get,omitempty"`
-	TcpSocket *TCPHealthCheckConfig `json:"tcp_socket,omitempty"`
-	Exec *ExecHealthCheckConfig `json:"exec,omitempty"`
+	HTTPGet   *HTTPHealthCheckConfig `json:"http_get,omitempty"`
+	TCPSocket *TCPHealthCheckConfig  `json:"tcp_socket,omitempty"`
+	Exec      *ExecHealthCheckConfig `json:"exec,omitempty"`
 }
 
 type HTTPHealthCheckConfig struct {
@@ -136,26 +136,26 @@ type HTTPHealthCheckConfig struct {
 	Scheme string `json:"scheme,omitempty"`
 	// Headers the proxy will pass on to make the request.
 	// Allows repeated headers.
-	HttpHeaders          []*HTTPHeader `json:"http_headers,omitempty"`
+	HTTPHeaders []*HTTPHeader `json:"http_headers,omitempty"`
 }
 
 type HTTPHeader struct {
 	// The header field name
 	Name string `json:"name,omitempty"`
 	// The header field value
-	Value                string   `json:"value,omitempty"`
+	Value string `json:"value,omitempty"`
 }
 
 type TCPHealthCheckConfig struct {
 	// Host to connect to, defaults to localhost.
 	Host string `json:"host,omitempty"`
 	// REQUIRED. Port of host.
-	Port                 uint32   `json:"port"`
+	Port uint32 `json:"port"`
 }
 
 type ExecHealthCheckConfig struct {
 	// Command to run. Exit status of 0 is treated as live/healthy and non-zero is unhealthy.
-	Command              []string `json:"command,omitempty"`
+	Command []string `json:"command,omitempty"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
