@@ -2477,7 +2477,7 @@ func (in *WorkloadGroupSpec) DeepCopyInto(out *WorkloadGroupSpec) {
 	}
 	if in.Template != nil {
 		in, out := &in.Template, &out.Template
-		*out = new(WorkloadEntry)
+		*out = new(WorkloadEntrySpec)
 		(*in).DeepCopyInto(*out)
 	}
 	if in.Probe != nil {

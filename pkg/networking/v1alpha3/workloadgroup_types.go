@@ -85,7 +85,7 @@ type WorkloadGroupSpec struct {
 	// should default to `default`. The workload identities (mTLS certificates) will be bootstrapped using the
 	// specified service account's token. Workload entries in this group will be in the same namespace as the
 	// workload group, and inherit the labels and annotations from the above `metadata` field.
-	Template *WorkloadEntry `json:"template"`
+	Template *WorkloadEntrySpec `json:"template"`
 	// `ReadinessProbe` describes the configuration the user must provide for health-checking on their workload.
 	// This configuration mirrors K8S in both syntax and logic for the most part.
 	Probe *ReadinessProbe `json:"probe,omitempty"`
