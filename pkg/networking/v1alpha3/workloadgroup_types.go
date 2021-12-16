@@ -74,7 +74,7 @@ type WorkloadGroup struct {
 // ```
 
 // NOTE: Use this page https://istio.io/latest/docs/reference/config/networking/workload-group as a reference to verify
-// if fields are required.
+// if the fields are required.
 
 type WorkloadGroupSpec struct {
 	// Metadata that will be used for all corresponding `WorkloadEntries`.
@@ -102,25 +102,25 @@ type WorkloadGroupObjectMeta struct {
 
 type ReadinessProbe struct {
 	// Number of seconds after the container has started before readiness probes are initiated.
-	InitialDelaySeconds int32 `json:"initial_delay_seconds,omitempty"`
+	InitialDelaySeconds int32 `json:"initialDelaySeconds,omitempty"`
 	// Number of seconds after which the probe times out.
 	// Defaults to 1 second. Minimum value is 1 second.
-	TimeoutSeconds int32 `json:"timeout_seconds,omitempty"`
+	TimeoutSeconds int32 `json:"timeoutSeconds,omitempty"`
 	// How often (in seconds) to perform the probe.
 	// Default to 10 seconds. Minimum value is 1 second.
-	PeriodSeconds int32 `json:"period_seconds,omitempty"`
+	PeriodSeconds int32 `json:"periodSeconds,omitempty"`
 	// Minimum consecutive successes for the probe to be considered successful after having failed.
 	// Defaults to 1 second.
-	SuccessThreshold int32 `json:"success_threshold,omitempty"`
+	SuccessThreshold int32 `json:"successThreshold,omitempty"`
 	// Minimum consecutive failures for the probe to be considered failed after having succeeded.
 	// Defaults to 3 seconds.
-	FailureThreshold int32 `json:"failure_threshold,omitempty"`
+	FailureThreshold int32 `json:"failureThreshold,omitempty"`
 
 	// Users can only provide one configuration for health-checks (tcp, http, exec),
 	// and this is expressed as a one-of. All the other configuration values
 	// hold true for any of the health-check methods.
-	HTTPGet   *HTTPHealthCheckConfig `json:"http_get,omitempty"`
-	TCPSocket *TCPHealthCheckConfig  `json:"tcp_socket,omitempty"`
+	HTTPGet   *HTTPHealthCheckConfig `json:"httpGet,omitempty"`
+	TCPSocket *TCPHealthCheckConfig  `json:"tcpSocket,omitempty"`
 	Exec      *ExecHealthCheckConfig `json:"exec,omitempty"`
 }
 
@@ -136,7 +136,7 @@ type HTTPHealthCheckConfig struct {
 	Scheme string `json:"scheme,omitempty"`
 	// Headers the proxy will pass on to make the request.
 	// Allows repeated headers.
-	HTTPHeaders []*HTTPHeader `json:"http_headers,omitempty"`
+	HTTPHeaders []*HTTPHeader `json:"httpHeaders,omitempty"`
 }
 
 type HTTPHeader struct {
