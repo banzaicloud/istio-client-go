@@ -20,13 +20,11 @@ import v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
 // WorkloadEntry
 type WorkloadEntry struct {
-	v1.TypeMeta
-	// +optional
-	v1.ObjectMeta
+	v1.TypeMeta   `json:",inline"`
+	v1.ObjectMeta `json:"metadata,omitempty"`
 
 	// Spec defines the implementation of this definition.
-	// +optional
-	Spec WorkloadEntrySpec
+	Spec WorkloadEntrySpec `json:"spec"`
 }
 
 // `WorkloadEntry` enables operators to describe the properties of a
@@ -187,7 +185,6 @@ type WorkloadEntrySpec struct {
 // WorkloadEntryList is a collection of EnvoyFilters.
 type WorkloadEntryList struct {
 	v1.TypeMeta `json:",inline"`
-	// +optional
 	v1.ListMeta `json:"metadata"`
 	Items       []WorkloadEntry `json:"items"`
 }
