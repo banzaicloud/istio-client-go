@@ -16,6 +16,8 @@ package v1alpha3
 
 import (
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
+
+	istioApi "github.com/banzaicloud/istio-client-go/pkg/networking/v1alpha3/istioapi"
 )
 
 // +genclient
@@ -24,7 +26,8 @@ import (
 type WorkloadGroup struct {
 	metav1.TypeMeta   `json:",inline"`
 	metav1.ObjectMeta `json:"metadata,omitempty"`
-	Spec              WorkloadGroupSpec `json:"spec"`
+	Spec              WorkloadGroupSpec    `json:"spec"`
+	Status            istioApi.IstioStatus `json:"status"`
 }
 
 // `WorkloadGroup` describes a collection of workload instances.

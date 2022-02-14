@@ -14,7 +14,11 @@
 
 package v1alpha3
 
-import v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
+import (
+	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
+
+	istioApi "github.com/banzaicloud/istio-client-go/pkg/networking/v1alpha3/istioapi"
+)
 
 // +genclient
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
@@ -24,7 +28,8 @@ type WorkloadEntry struct {
 	v1.ObjectMeta `json:"metadata,omitempty"`
 
 	// Spec defines the implementation of this definition.
-	Spec WorkloadEntrySpec `json:"spec"`
+	Spec   WorkloadEntrySpec    `json:"spec"`
+	Status istioApi.IstioStatus `json:"status"`
 }
 
 // `WorkloadEntry` enables operators to describe the properties of a
