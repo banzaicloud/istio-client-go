@@ -30,16 +30,11 @@ type IstioStatus struct {
 	// +patchMergeKey=type
 	// +patchStrategy=merge
 	Conditions []*IstioCondition `protobuf:"bytes,1,rep,name=conditions,proto3" json:"conditions,omitempty"`
-	// Includes any errors or warnings detected by Istio's analyzers.
-	// +optional
-	// +patchMergeKey=type
-	// +patchStrategy=merge
-	ValidationMessages []*AnalysisMessageBase `protobuf:"bytes,2,rep,name=validation_messages,json=validationMessages,proto3" json:"validation_messages,omitempty"`
 	// Resource Generation to which the Reconciled Condition refers.
 	// When this value is not equal to the object's metadata generation, reconciled condition  calculation for the current
 	// generation is still in progress.  See https://istio.io/latest/docs/reference/config/config-status/ for more info.
 	// +optional
-	ObservedGeneration   int64    `protobuf:"varint,3,opt,name=observed_generation,json=observedGeneration,proto3" json:"observed_generation,omitempty"`
+	ObservedGeneration   int64    `protobuf:"varint,2,opt,name=observed_generation,json=observedGeneration,proto3" json:"observed_generation,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
@@ -81,13 +76,6 @@ var xxx_messageInfo_IstioStatus proto.InternalMessageInfo
 func (m *IstioStatus) GetConditions() []*IstioCondition {
 	if m != nil {
 		return m.Conditions
-	}
-	return nil
-}
-
-func (m *IstioStatus) GetValidationMessages() []*AnalysisMessageBase {
-	if m != nil {
-		return m.ValidationMessages
 	}
 	return nil
 }
@@ -262,20 +250,6 @@ func (m *IstioStatus) MarshalToSizedBuffer(dAtA []byte) (int, error) {
 		i--
 		dAtA[i] = 0x18
 	}
-	if len(m.ValidationMessages) > 0 {
-		for iNdEx := len(m.ValidationMessages) - 1; iNdEx >= 0; iNdEx-- {
-			{
-				size, err := m.ValidationMessages[iNdEx].MarshalToSizedBuffer(dAtA[:i])
-				if err != nil {
-					return 0, err
-				}
-				i -= size
-				i = encodeVarintStatus(dAtA, i, uint64(size))
-			}
-			i--
-			dAtA[i] = 0x12
-		}
-	}
 	if len(m.Conditions) > 0 {
 		for iNdEx := len(m.Conditions) - 1; iNdEx >= 0; iNdEx-- {
 			{
@@ -395,12 +369,6 @@ func (m *IstioStatus) Size() (n int) {
 			n += 1 + l + sovStatus(uint64(l))
 		}
 	}
-	if len(m.ValidationMessages) > 0 {
-		for _, e := range m.ValidationMessages {
-			l = e.Size()
-			n += 1 + l + sovStatus(uint64(l))
-		}
-	}
 	if m.ObservedGeneration != 0 {
 		n += 1 + sovStatus(uint64(m.ObservedGeneration))
 	}
@@ -516,40 +484,6 @@ func (m *IstioStatus) Unmarshal(dAtA []byte) error {
 			}
 			iNdEx = postIndex
 		case 2:
-			if wireType != 2 {
-				return fmt.Errorf("proto: wrong wireType = %d for field ValidationMessages", wireType)
-			}
-			var msglen int
-			for shift := uint(0); ; shift += 7 {
-				if shift >= 64 {
-					return ErrIntOverflowStatus
-				}
-				if iNdEx >= l {
-					return io.ErrUnexpectedEOF
-				}
-				b := dAtA[iNdEx]
-				iNdEx++
-				msglen |= int(b&0x7F) << shift
-				if b < 0x80 {
-					break
-				}
-			}
-			if msglen < 0 {
-				return ErrInvalidLengthStatus
-			}
-			postIndex := iNdEx + msglen
-			if postIndex < 0 {
-				return ErrInvalidLengthStatus
-			}
-			if postIndex > l {
-				return io.ErrUnexpectedEOF
-			}
-			m.ValidationMessages = append(m.ValidationMessages, &AnalysisMessageBase{})
-			if err := m.ValidationMessages[len(m.ValidationMessages)-1].Unmarshal(dAtA[iNdEx:postIndex]); err != nil {
-				return err
-			}
-			iNdEx = postIndex
-		case 3:
 			if wireType != 0 {
 				return fmt.Errorf("proto: wrong wireType = %d for field ObservedGeneration", wireType)
 			}
