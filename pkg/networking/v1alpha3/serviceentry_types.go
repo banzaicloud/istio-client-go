@@ -467,6 +467,10 @@ type ServiceEntrySpec struct {
 	// If specified, the proxy will verify that the server
 	// certificate's subject alternate name matches one of the specified values.
 	SubjectAltNames []string `json:"subjectAltNames,omitempty"`
+	// Criteria used to select the specific set of pods/VMs on which this
+	// `SidecarSpec` configuration should be applied. If omitted, the `SidecarSpec`
+	// configuration will be applied to all workload instances in the same namespace.
+	WorkloadSelector *WorkloadSelector `json:"workloadSelector,omitempty"`
 }
 
 // Endpoint defines a network address (IP or hostname) associated with
